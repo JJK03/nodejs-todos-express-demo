@@ -16,6 +16,7 @@ app.use(methodOverride('_method'));
 app.get('/', async (req, res) => {
     try {
         const [todos] = await db.query("SELECT * FROM todos ORDER BY created_at DESC");
+        console.log(todos);
         res.render('index', { todos });
     } catch (err) {
         res.status(500).send(err.message);
